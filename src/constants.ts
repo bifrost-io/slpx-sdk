@@ -105,6 +105,12 @@ export const CONTRACT_ADDRESS_INFO: ContractAddressInfo = {
       name: "Bifrost Native Token",
       symbol: "BNC",
       decimals: 18,
+    },
+    vDOT: {
+      address: "0xBC33B4D48f76d17A1800aFcB730e8a6AAada7Fe5",
+      name: "Bifrost Voucher DOT",
+      symbol: "vDOT",
+      decimals: 18,
     }
   },
   base: {
@@ -121,6 +127,12 @@ export const CONTRACT_ADDRESS_INFO: ContractAddressInfo = {
       address: "0xf877500C6ff3cf8305245bCb3Cf1c5A6B7287aEF",
       name: "Bifrost Native Token",
       symbol: "BNC",
+      decimals: 18,
+    },
+    vDOT: {
+      address: "0xBC33B4D48f76d17A1800aFcB730e8a6AAada7Fe5",
+      name: "Bifrost Voucher DOT",
+      symbol: "vDOT",
       decimals: 18,
     }
   },
@@ -139,6 +151,12 @@ export const CONTRACT_ADDRESS_INFO: ContractAddressInfo = {
       name: "Bifrost Native Token",
       symbol: "BNC",
       decimals: 18,
+    },
+    vDOT: {
+      address: "0xBC33B4D48f76d17A1800aFcB730e8a6AAada7Fe5",
+      name: "Bifrost Voucher DOT",
+      symbol: "vDOT",
+      decimals: 18,
     }
   },
   bsc: {
@@ -155,6 +173,12 @@ export const CONTRACT_ADDRESS_INFO: ContractAddressInfo = {
       address: "0xf877500C6ff3cf8305245bCb3Cf1c5A6B7287aEF",
       name: "Bifrost Native Token",
       symbol: "BNC",
+      decimals: 18,
+    },
+    vDOT: {
+      address: "0xBC33B4D48f76d17A1800aFcB730e8a6AAada7Fe5",
+      name: "Bifrost Voucher DOT",
+      symbol: "vDOT",
       decimals: 18,
     }
   }

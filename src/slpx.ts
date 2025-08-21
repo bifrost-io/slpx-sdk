@@ -1,4 +1,5 @@
 import { CONTRACT_ADDRESS_INFO } from "./constants";
+import { SLPX_V2_ABI } from "./abis";
 
 export class Slpx {
   private rspId: string;
@@ -11,10 +12,19 @@ export class Slpx {
     return this.rspId;
   }
 
+  // return or console log the contract address info
   public getContractAddressInfo(consoleLog = false) {
     if (consoleLog) {
-      console.log(CONTRACT_ADDRESS_INFO);
+      console.log(CONTRACT_ADDRESS_INFO, 2, 2);
     }
     return CONTRACT_ADDRESS_INFO;
+  }
+
+  // return or console log the slpx abi
+  public getSlpxAbi(consoleLog = false) {
+    if (consoleLog) {
+      console.log(SLPX_V2_ABI, 2, 2);
+    }
+    return SLPX_V2_ABI;
   }
 }

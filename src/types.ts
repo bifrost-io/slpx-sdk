@@ -18,6 +18,7 @@ export type NetworkContractInfo = {
   slpx?: SlpxContractInfo;
   vBNC?: TokenContractInfo;
   BNC?: TokenContractInfo;
+  vDOT?: TokenContractInfo;
   vManta?: TokenContractInfo;
   manta?: TokenContractInfo;
   xcDot?: TokenContractInfo;
