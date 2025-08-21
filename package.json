@@ -1,5 +1,5 @@
 {
-  "name": "bifrost-sdk",
+  "name": "slpx-sdk",
   "type": "module",
   "version": "0.0.0",
   "main": "./dist/index.cjs",
@@ -22,18 +22,15 @@
     "bun"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/wobsoriano/pkg-name#readme",
+  "homepage": "https://github.com/bifrost-io/slpx-sdk",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wobsoriano/pkg-name.git"
+    "url": "git+https://github.com/bifrost-io/slpx-sdk.git"
   },
-  "bugs": "https://github.com/wobsoriano/pkg-name/issues",
-  "author": "Robert Soriano <sorianorobertc@gmail.com>",
+  "bugs": "https://github.com/bifrost-io/slpx-sdk/issues",
+  "author": "Bifrost <dev@bifrost.io>",
   "devDependencies": {
     "bun-plugin-dts": "^0.3.0",
     "@types/bun": "^1.1.10"
-  },
-  "dependencies": {
-    "viem": "^2.34.0"
   }
 }
