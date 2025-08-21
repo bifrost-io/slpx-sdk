@@ -78,4 +78,72 @@ export const CONTRACT_ADDRESS_INFO = {
   moonbaseTestnet: {
     address: "0x0000000000000000000000000000000000000000",
   },
+  arbitrum: {
+    slpx: {
+      address: "0x61c57c187557442393a96bA8e6FDfE27610832a5",
+    },
+    vBNC: {
+      address: "0x61c57c187557442393a96bA8e6FDfE27610832a5",
+      name: "Bifrost Voucher BNC",
+      symbol: "vBNC",
+      decimals: 18,
+    },
+    BNC: {
+      address: "0xf877500C6ff3cf8305245bCb3Cf1c5A6B7287aEF",
+      name: "Bifrost Native Token",
+      symbol: "BNC",
+      decimals: 18,
+    }
+  },
+  base: {
+    slpx: {
+      address: "0x61c57c187557442393a96bA8e6FDfE27610832a5",
+    },
+    vBNC: {
+      address: "0x61c57c187557442393a96bA8e6FDfE27610832a5",
+      name: "Bifrost Voucher BNC",
+      symbol: "vBNC",
+      decimals: 18,
+    },
+    BNC: {
+      address: "0xf877500C6ff3cf8305245bCb3Cf1c5A6B7287aEF",
+      name: "Bifrost Native Token",
+      symbol: "BNC",
+      decimals: 18,
+    }
+  },
+  ethereum: {
+    slpx: {
+      address: "0x61c57c187557442393a96bA8e6FDfE27610832a5",
+    },
+    vBNC: {
+      address: "0x61c57c187557442393a96bA8e6FDfE27610832a5",
+      name: "Bifrost Voucher BNC",
+      symbol: "vBNC",
+      decimals: 18,
+    },
+    BNC: {
+      address: "0xf877500C6ff3cf8305245bCb3Cf1c5A6B7287aEF",
+      name: "Bifrost Native Token",
+      symbol: "BNC",
+      decimals: 18,
+    }
+  },
+  bsc: {
+    slpx: {
+      address: "0x61c57c187557442393a96bA8e6FDfE27610832a5",
+    },
+    vBNC: {
+      address: "0x61c57c187557442393a96bA8e6FDfE27610832a5",
+      name: "Bifrost Voucher BNC",
+      symbol: "vBNC",
+      decimals: 18,
+    },
+    BNC: {
+      address: "0xf877500C6ff3cf8305245bCb3Cf1c5A6B7287aEF",
+      name: "Bifrost Native Token",
+      symbol: "BNC",
+      decimals: 18,
+    }
+  }
 }
