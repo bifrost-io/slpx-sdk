@@ -1,12 +1,10 @@
 import { describe, it, expect } from 'bun:test'
-import { one, two } from '../src'
+import { Slpx } from '../src/slpx'
 
-describe('should', () => {
-  it('export 1', () => {
-    expect(one).toBe(1)
-  })
-
-  it('export 2', () => {
-    expect(two).toBe(2)
+describe('Slpx', () => {
+  it('should get contract address info', () => {
+    const slpx = new Slpx()
+    const contractAddressInfo = slpx.getContractAddressInfo()
+    expect(contractAddressInfo).toBeDefined()
   })
 })
