@@ -1,0 +1,5 @@
+export const CONTRACT_ADDRESS_INFO = {
+  manta: {
+    address: "0x0000000000000000000000000000000000000000",
+  }
+}
