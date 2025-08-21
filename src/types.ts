@@ -1,3 +1,5 @@
+import { Address } from "viem";
+
 export type ContractAddressInfo = {
   astarMainnet: NetworkContractInfo;
   astarTestnet: NetworkContractInfo;
@@ -6,11 +8,34 @@ export type ContractAddressInfo = {
   moonbeamMainnet: NetworkContractInfo;
   moonriverTestnet: NetworkContractInfo;
   moonbaseTestnet: NetworkContractInfo;
+  arbitrum: NetworkContractInfo;
+  base: NetworkContractInfo;
+  ethereum: NetworkContractInfo;
+  bsc: NetworkContractInfo;
 };
 
 export type NetworkContractInfo = {
-  address?: string;
-  slpx?: ContractAddressInfo;
-  vManta?: ContractAddressInfo;
-  manta?: ContractAddressInfo;
+  slpx?: SlpxContractInfo;
+  vBNC?: TokenContractInfo;
+  BNC?: TokenContractInfo;
+  vManta?: TokenContractInfo;
+  manta?: TokenContractInfo;
+  xcDot?: TokenContractInfo;
+  xcvDOT?: TokenContractInfo;
+  xcASTR?: TokenContractInfo;
+  xcvASTR?: TokenContractInfo;
+  GLMR?: TokenContractInfo;
+  xcGLMR?: TokenContractInfo;
+  xcvGLMR?: TokenContractInfo;
 };
+
+export type SlpxContractInfo = {
+  address: Address;
+}
+
+export type TokenContractInfo = {
+  address: Address;
+  name: string;
+  symbol: string;
+  decimals: number;
+}

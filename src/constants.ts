@@ -1,9 +1,15 @@
-export const CONTRACT_ADDRESS_INFO = {
+import { ContractAddressInfo } from "./types";
+
+export const CONTRACT_ADDRESS_INFO: ContractAddressInfo = {
   astarMainnet: {
-    address: "0x0000000000000000000000000000000000000000",
+    slpx: {
+      address: "0x0000000000000000000000000000000000000000",
+    },
   },
   astarTestnet: {
-    address: "0x0000000000000000000000000000000000000000",
+    slpx: {
+      address: "0x0000000000000000000000000000000000000000",
+    },
   },
   mantaPacific: {
     slpx: {
@@ -23,7 +29,9 @@ export const CONTRACT_ADDRESS_INFO = {
     },
   },
   soneiumMainnet: {
-    address: "0x0000000000000000000000000000000000000000",
+    slpx: {
+      address: "0x0000000000000000000000000000000000000000",
+    },
   },
   moonbeamMainnet: {
     slpx: {
@@ -73,10 +81,14 @@ export const CONTRACT_ADDRESS_INFO = {
     },
   },
   moonriverTestnet: {
-    address: "0x0000000000000000000000000000000000000000",
+    slpx: {
+      address: "0x0000000000000000000000000000000000000000",
+    },
   },
   moonbaseTestnet: {
-    address: "0x0000000000000000000000000000000000000000",
+    slpx: {
+      address: "0x0000000000000000000000000000000000000000",
+    },
   },
   arbitrum: {
     slpx: {
