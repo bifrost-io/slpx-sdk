@@ -1,4 +1,4 @@
-export const SLPX_ABI = [
+export const SLPX_V2_ABI = [
   {
     inputs: [
       { internalType: "address", name: "spender", type: "address" },
