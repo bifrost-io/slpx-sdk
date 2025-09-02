@@ -1,4 +1,4 @@
-import { ContractAddressInfo } from "./types";
+import { ContractAddressInfo, PublicRpcUrls } from "./types";
 
 export const CONTRACT_ADDRESS_INFO: ContractAddressInfo = {
   astarMainnet: {
@@ -182,4 +182,9 @@ export const CONTRACT_ADDRESS_INFO: ContractAddressInfo = {
       decimals: 18,
     }
   }
+}
+
+export const PUBLIC_RPC_URLS: PublicRpcUrls = {
+  mantaPacific: "https://manta-pacific.drpc.org",
+  moonbeamMainnet: "https://rpc.api.moonbeam.network",
 }

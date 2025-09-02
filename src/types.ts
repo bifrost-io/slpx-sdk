@@ -40,3 +40,8 @@ export type TokenContractInfo = {
   symbol: string;
   decimals: number;
 }
+
+export type PublicRpcUrls = {
+  mantaPacific: string;
+  moonbeamMainnet: string;
+}

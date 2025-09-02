@@ -27,4 +27,8 @@ export class Slpx {
     }
     return SLPX_V2_ABI;
   }
+
+  public getAssetToVassetConversionRate(asset: string, vasset: string) {
+    return 1;
+  }
 }
