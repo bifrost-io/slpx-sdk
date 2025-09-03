@@ -41,6 +41,22 @@ export function getEstimateSendAndCallFeeParams(asset: string, chainId: number, 
   }
 }
 
+export function getMintParams(asset: string, chainId: number, amount: string) {
+  switch (chainId) {
+    case manta.id:
+      // throw error if not MANTA token
+      if (asset !== CONTRACT_ADDRESS_INFO.mantaPacific.manta?.address) {
+        throw new Error("Asset is not MANTA token");
+      }
+      // Otherwise return params
+      return {
+        address: CONTRACT_ADDRESS_INFO.mantaPacific.slpx?.address,
+      }
+    default:
+      throw new Error("Chain ID is not valid or unsupported");
+  }
+}
+
 /**
  * Returns the contract address info
  * @param consoleLog - Whether to console log the contract address info

@@ -1,4 +1,5 @@
 import { ContractAddressInfo, PublicRpcUrls } from "./types";
+import { Address } from "viem";
 
 export const CONTRACT_ADDRESS_INFO: ContractAddressInfo = {
   astarMainnet: {
@@ -188,3 +189,5 @@ export const PUBLIC_RPC_URLS: PublicRpcUrls = {
   mantaPacific: "https://manta-pacific.drpc.org",
   moonbeamMainnet: "https://rpc.api.moonbeam.network",
 }
+
+export const NATIVE_TOKEN_ADDRESS: Address = "0xeeeEEEeEEeeeEeEeEEEeEeeeeEEEEeEEeEeeeeeE"
