@@ -9,7 +9,7 @@ import { manta } from "viem/chains"
 
 /**
  * Estimates the fee for sending and calling a cross-chain transaction
- * @param asset - The token contract address to send (e.g. 0xeeeEEEeEEeeeEeEeEEEeEeeeeEEEEeEEeEeeeeeE for native token, or token address)
+ * @param asset - The token contract address to send (e.g. 0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE for native token, or token address)
  * @param chainId - The destination chain ID (currently supports Manta Pacific)
  * @param amount - The amount to send as a string (will be parsed with 18 decimals)
  * @returns Contract call params for estimateSendAndCallFee function

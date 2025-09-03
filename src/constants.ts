@@ -190,4 +190,4 @@ export const PUBLIC_RPC_URLS: PublicRpcUrls = {
   moonbeamMainnet: "https://rpc.api.moonbeam.network",
 }
 
-export const NATIVE_TOKEN_ADDRESS: Address = "0xeeeEEEeEEeeeEeEeEEEeEeeeeEEEEeEEeEeeeeeE"
+export const NATIVE_TOKEN_ADDRESS: Address = "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE"
