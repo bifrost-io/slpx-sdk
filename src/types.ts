@@ -9,9 +9,14 @@ export type ContractAddressInfo = {
   moonriverTestnet: NetworkContractInfo;
   moonbaseTestnet: NetworkContractInfo;
   arbitrum: NetworkContractInfo;
+  arbitrumSepolia: NetworkContractInfo;
   base: NetworkContractInfo;
+  baseSepolia: NetworkContractInfo;
   ethereum: NetworkContractInfo;
+  ethereumSepolia: NetworkContractInfo;
   bsc: NetworkContractInfo;
+  bscTestnet: NetworkContractInfo;
+  passetHub: NetworkContractInfo;
 };
 
 export type NetworkContractInfo = {

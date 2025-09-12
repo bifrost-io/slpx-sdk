@@ -114,6 +114,11 @@ export const CONTRACT_ADDRESS_INFO: ContractAddressInfo = {
       decimals: 18,
     }
   },
+  arbitrumSepolia: {
+    slpx: {
+      address: "0x61c57c187557442393a96bA8e6FDfE27610832a5",
+    },
+  },
   base: {
     slpx: {
       address: "0x61c57c187557442393a96bA8e6FDfE27610832a5",
@@ -136,6 +141,11 @@ export const CONTRACT_ADDRESS_INFO: ContractAddressInfo = {
       symbol: "vDOT",
       decimals: 18,
     }
+  },
+  baseSepolia: {
+    slpx: {
+      address: "0x61c57c187557442393a96bA8e6FDfE27610832a5",
+    },
   },
   ethereum: {
     slpx: {
@@ -160,6 +170,11 @@ export const CONTRACT_ADDRESS_INFO: ContractAddressInfo = {
       decimals: 18,
     }
   },
+  ethereumSepolia: {
+    slpx: {
+      address: "0x61c57c187557442393a96bA8e6FDfE27610832a5",
+    },
+  },
   bsc: {
     slpx: {
       address: "0x61c57c187557442393a96bA8e6FDfE27610832a5",
@@ -182,6 +197,22 @@ export const CONTRACT_ADDRESS_INFO: ContractAddressInfo = {
       symbol: "vDOT",
       decimals: 18,
     }
+  },
+  bscTestnet: {
+    slpx: {
+      address: "0x61c57c187557442393a96bA8e6FDfE27610832a5",
+    },
+  },
+  passetHub: {
+    slpx: {
+      address: "0x61c57c187557442393a96bA8e6FDfE27610832a5",
+    },
+    vBNC: {
+      address: "0x61c57c187557442393a96bA8e6FDfE27610832a5",
+      name: "Bifrost Voucher BNC",
+      symbol: "vBNC",
+      decimals: 18,
+    },
   }
 }
 
@@ -190,4 +221,79 @@ export const PUBLIC_RPC_URLS: PublicRpcUrls = {
   moonbeamMainnet: "https://rpc.api.moonbeam.network",
 }
 
+export const CHAIN_NAME_CHAIN_ID_MAP = {
+  mantaPacific: 169,
+  moonbeamMainnet: 1284,
+  moonriverTestnet: 1285,
+  moonbaseTestnet: 1287,
+  arbitrum: 42161,
+  arbitrumSepolia: 421613,
+  base: 8453,
+  baseSepolia: 84531,
+  ethereum: 1,
+  ethereumSepolia: 11155111,
+  bsc: 56,
+  bscTestnet: 97,
+  passetHub: 100,
+}
+
 export const NATIVE_TOKEN_ADDRESS: Address = "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE"
+
+// Utility functions for chain name/ID lookup
+export type ChainName = keyof typeof CHAIN_NAME_CHAIN_ID_MAP
+export type ChainId = typeof CHAIN_NAME_CHAIN_ID_MAP[ChainName]
+
+/**
+ * Get chain ID by chain name
+ * @param chainName - The chain name
+ * @returns The corresponding chain ID or undefined if not found
+ */
+export function getChainIdByName(chainName: ChainName): ChainId | undefined {
+  return CHAIN_NAME_CHAIN_ID_MAP[chainName]
+}
+
+/**
+ * Get chain name by chain ID
+ * @param chainId - The chain ID
+ * @returns The corresponding chain name or undefined if not found
+ */
+export function getChainNameById(chainId: ChainId): ChainName | undefined {
+  const entry = Object.entries(CHAIN_NAME_CHAIN_ID_MAP).find(
+    ([_, id]) => id === chainId
+  )
+  return entry ? (entry[0] as ChainName) : undefined
+}
+
+/**
+ * Check if a chain name exists
+ * @param chainName - The chain name to check
+ * @returns True if the chain name exists
+ */
+export function isValidChainName(chainName: string): chainName is ChainName {
+  return chainName in CHAIN_NAME_CHAIN_ID_MAP
+}
+
+/**
+ * Check if a chain ID exists
+ * @param chainId - The chain ID to check
+ * @returns True if the chain ID exists
+ */
+export function isValidChainId(chainId: number): chainId is ChainId {
+  return Object.values(CHAIN_NAME_CHAIN_ID_MAP).includes(chainId as ChainId)
+}
+
+/**
+ * Get all available chain names
+ * @returns Array of all chain names
+ */
+export function getAllChainNames(): ChainName[] {
+  return Object.keys(CHAIN_NAME_CHAIN_ID_MAP) as ChainName[]
+}
+
+/**
+ * Get all available chain IDs
+ * @returns Array of all chain IDs
+ */
+export function getAllChainIds(): ChainId[] {
+  return Object.values(CHAIN_NAME_CHAIN_ID_MAP)
+}
