@@ -6,3 +6,18 @@
 ```shell
 npm install slpx-sdk
 ```
+
+```shell
+bun add slpx-sdk
+```
+
+```shell
+pnpm install slpx-sdk
+```
+
+```shell
+yarn add slpx-sdk
+```
+
+## Documetation
+Check out the [/docs](/docs/) folder in this repository for more guides
