@@ -1,7 +1,8 @@
 import { CONTRACT_ADDRESS_INFO, CHAIN_NAME_CHAIN_ID_MAP } from "./constants";
 import { TESTNET_SLPX_V2_ABI } from "./abis";
-import { parseUnits, Address } from "viem";
-import { ValidTestnetChainInput } from "./types";
+import { parseUnits } from "viem";
+import { ValidTestnetChainInput, AssetName } from "./types";
+import { getTestnetAssetAddress } from "./utils";
 
 //===============================================
 // Function exports
@@ -9,7 +10,7 @@ import { ValidTestnetChainInput } from "./types";
 
 /**
  * Estimates the fee for sending and calling a cross-chain transaction
- * @param underlyingAssetAddress - The token contract address to send (e.g. 0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE for native token, or token address)
+ * @param underlyingAssetName - The name of the underlying asset
  * @param chain - The destination chain ID (currently supports Manta Pacific)
  * @param amount - The amount to send as a string (will be parsed with 18 decimals)
  * @param partnerCode - The partner code to use for the mint
@@ -18,7 +19,10 @@ import { ValidTestnetChainInput } from "./types";
  * @throws Error if amount is not a positive number
  * @throws Error if partner code is not a string
  */
-export function getTestnetMintParams(underlyingAssetAddress: Address, chain: ValidTestnetChainInput, amount: string, partnerCode: string = "bifrost") {
+export function getTestnetMintParams(underlyingAssetName: AssetName, chain: ValidTestnetChainInput, amount: string, partnerCode: string = "bifrost") {
+  // Check if the underlying asset address is valid
+  const underlyingAssetAddress = getTestnetAssetAddress(underlyingAssetName, chain);
+  
   let chainId: number;
   
   if (typeof chain === "string") {
