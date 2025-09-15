@@ -29,6 +29,23 @@ export const CONTRACT_ADDRESS_INFO: ContractAddressInfo = {
       decimals: 18,
     },
   },
+  mantaPacificSepolia: {
+    slpx: {
+      address: "0x95A4D4b345c551A9182289F9dD7A018b7Fd0f940",
+    },
+    vManta: {
+      address: "0x7746ef546d562b443AE4B4145541a3b1a3D75717",
+      name: "vManta",
+      symbol: "vManta",
+      decimals: 18,
+    },
+    manta: {
+      address: "0x95CeF13441Be50d20cA4558CC0a27B601aC544E5",
+      name: "Manta",
+      symbol: "MANTA",
+      decimals: 18,
+    },
+  },
   soneiumMainnet: {
     slpx: {
       address: "0x0000000000000000000000000000000000000000",
@@ -324,19 +341,20 @@ export const PUBLIC_RPC_URLS: PublicRpcUrls = {
 
 export const CHAIN_NAME_CHAIN_ID_MAP = {
   mantaPacific: 169,
+  mantaPacificSepolia: 3441006,
   moonbeamMainnet: 1284,
   moonriverTestnet: 1285,
   moonbaseTestnet: 1287,
   arbitrum: 42161,
-  arbitrumSepolia: 421613,
+  arbitrumSepolia: 421614,
   base: 8453,
-  baseSepolia: 84531,
+  baseSepolia: 84532,
   ethereum: 1,
   ethereumSepolia: 11155111,
   bsc: 56,
   bscTestnet: 97,
-  passetHub: 100,
-  unichainSepolia: 11155111,
+  passetHub: 420420422,
+  unichainSepolia: 1301,
 }
 
 export const NATIVE_TOKEN_ADDRESS: Address = "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE"

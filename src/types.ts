@@ -4,6 +4,7 @@ export type ContractAddressInfo = {
   astarMainnet: NetworkContractInfo;
   astarTestnet: NetworkContractInfo;
   mantaPacific: NetworkContractInfo;
+  mantaPacificSepolia: NetworkContractInfo;
   soneiumMainnet: NetworkContractInfo;
   moonbeamMainnet: NetworkContractInfo;
   moonriverTestnet: NetworkContractInfo;
