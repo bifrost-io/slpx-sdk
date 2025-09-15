@@ -359,61 +359,24 @@ export const CHAIN_NAME_CHAIN_ID_MAP = {
 
 export const NATIVE_TOKEN_ADDRESS: Address = "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE"
 
-// Utility functions for chain name/ID lookup
-export type ChainName = keyof typeof CHAIN_NAME_CHAIN_ID_MAP
-export type ChainId = typeof CHAIN_NAME_CHAIN_ID_MAP[ChainName]
-
-/**
- * Get chain ID by chain name
- * @param chainName - The chain name
- * @returns The corresponding chain ID or undefined if not found
- */
-export function getChainIdByName(chainName: ChainName): ChainId | undefined {
-  return CHAIN_NAME_CHAIN_ID_MAP[chainName]
-}
-
-/**
- * Get chain name by chain ID
- * @param chainId - The chain ID
- * @returns The corresponding chain name or undefined if not found
- */
-export function getChainNameById(chainId: ChainId): ChainName | undefined {
-  const entry = Object.entries(CHAIN_NAME_CHAIN_ID_MAP).find(
-    ([_, id]) => id === chainId
-  )
-  return entry ? (entry[0] as ChainName) : undefined
-}
-
-/**
- * Check if a chain name exists
- * @param chainName - The chain name to check
- * @returns True if the chain name exists
- */
-export function isValidChainName(chainName: string): chainName is ChainName {
-  return chainName in CHAIN_NAME_CHAIN_ID_MAP
-}
-
-/**
- * Check if a chain ID exists
- * @param chainId - The chain ID to check
- * @returns True if the chain ID exists
- */
-export function isValidChainId(chainId: number): chainId is ChainId {
-  return Object.values(CHAIN_NAME_CHAIN_ID_MAP).includes(chainId as ChainId)
-}
-
-/**
- * Get all available chain names
- * @returns Array of all chain names
- */
-export function getAllChainNames(): ChainName[] {
-  return Object.keys(CHAIN_NAME_CHAIN_ID_MAP) as ChainName[]
-}
-
-/**
- * Get all available chain IDs
- * @returns Array of all chain IDs
- */
-export function getAllChainIds(): ChainId[] {
-  return Object.values(CHAIN_NAME_CHAIN_ID_MAP)
-}
+export const paseoPassethub = {
+  id: 420420422,
+  name: "Paseo Passethub",
+  network: "paseo-passethub",
+  nativeCurrency: {
+    name: "PAS",
+    symbol: "PAS",
+    decimals: 18,
+  },
+  rpcUrls: {
+    default: {
+      http: ["https://testnet-passet-hub-eth-rpc.polkadot.io"],
+    },
+  },
+  blockExplorers: {
+    default: {
+      name: "Blockscout",
+      url: "https://blockscout-passet-hub.parity-testnet.parity.io",
+    },
+  },
+} as const;

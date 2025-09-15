@@ -54,3 +54,11 @@ export type PublicRpcUrls = {
   mantaPacific: string;
   moonbeamMainnet: string;
 }
+
+export type AssetName = "vETH" | "vDOT" | "DOT" | "vManta" | "manta" | "xcDot" | "xcvDOT" | "xcASTR" | "xcvASTR" | "GLMR" | "xcGLMR" | "xcvGLMR";
+
+export type TestnetChainName = "moonbaseTestnet" | "arbitrumSepolia" | "base" | "baseSepolia" | "ethereum" | "ethereumSepolia" | "bsc" | "bscTestnet" | "passetHub" | "unichainSepolia";
+
+export type TestnetChainId = 169 | 3441006 | 1284 | 1285 | 1287 | 42161 | 421614 | 8453 | 84532 | 1 | 11155111 | 56 | 97 | 420420422 | 1301;
+
+export type ValidTestnetChainInput = TestnetChainName | TestnetChainId;

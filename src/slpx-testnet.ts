@@ -1,12 +1,24 @@
 import { CONTRACT_ADDRESS_INFO, CHAIN_NAME_CHAIN_ID_MAP } from "./constants";
 import { TESTNET_SLPX_V2_ABI } from "./abis";
-import { parseUnits } from "viem";
+import { parseUnits, Address } from "viem";
+import { ValidTestnetChainInput } from "./types";
 
 //===============================================
 // Function exports
 //===============================================
 
-export function getTestnetMintParams(asset: string, chain: number | string, amount: string, partnerCode: string = "bifrost") {
+/**
+ * Estimates the fee for sending and calling a cross-chain transaction
+ * @param underlyingAssetAddress - The token contract address to send (e.g. 0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE for native token, or token address)
+ * @param chain - The destination chain ID (currently supports Manta Pacific)
+ * @param amount - The amount to send as a string (will be parsed with 18 decimals)
+ * @param partnerCode - The partner code to use for the mint
+ * @returns Contract call params for estimateSendAndCallFee function
+ * @throws Error if underlying asset address is not supported for the given chain
+ * @throws Error if amount is not a positive number
+ * @throws Error if partner code is not a string
+ */
+export function getTestnetMintParams(underlyingAssetAddress: Address, chain: ValidTestnetChainInput, amount: string, partnerCode: string = "bifrost") {
   let chainId: number;
   
   if (typeof chain === "string") {
@@ -29,12 +41,22 @@ export function getTestnetMintParams(asset: string, chain: number | string, amou
     throw new Error(`No contract address found for chain ID: ${chainId}`);
   }
 
+  // Check if the amount is a positive number
+  if (Number(amount) <= 0) {
+    throw new Error("Amount must be a positive number");
+  }
+
+  // Check if partner code is valid string
+  if (typeof partnerCode !== "string") {
+    throw new Error("Partner code must be a string");
+  }
+
   const testnetMintParams = {
     address: CONTRACT_ADDRESS_INFO[chainName].slpx!.address,
     abi: TESTNET_SLPX_V2_ABI,
     functionName: "createOrder",
     args: [
-      asset,
+      underlyingAssetAddress,
       parseUnits(amount, 18),
       0,
       partnerCode,
