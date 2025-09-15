@@ -17,11 +17,14 @@ export type ContractAddressInfo = {
   bsc: NetworkContractInfo;
   bscTestnet: NetworkContractInfo;
   passetHub: NetworkContractInfo;
+  unichainSepolia: NetworkContractInfo;
 };
 
 export type NetworkContractInfo = {
   slpx?: SlpxContractInfo;
   vBNC?: TokenContractInfo;
+  vETH?: TokenContractInfo;
+  DOT?: TokenContractInfo;
   BNC?: TokenContractInfo;
   vDOT?: TokenContractInfo;
   vManta?: TokenContractInfo;

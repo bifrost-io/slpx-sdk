@@ -116,7 +116,25 @@ export const CONTRACT_ADDRESS_INFO: ContractAddressInfo = {
   },
   arbitrumSepolia: {
     slpx: {
-      address: "0x61c57c187557442393a96bA8e6FDfE27610832a5",
+      address: "0x62CA64454046BbC18e35066A6350Acb0378EB3c2",
+    },
+    vETH: {
+      address: "0x0E011f93777B00f48B881B1Cabc5F0A6395BdC02",
+      name: "vETH",
+      symbol: "vETH",
+      decimals: 18,
+    },
+    vDOT: {
+      address: "0x6C0AAb3F91C4e49F6442CCEb65973778Ab0A177A",
+      name: "vDOT",
+      symbol: "vDOT",
+      decimals: 18,
+    },
+    DOT: {
+      address: "0x3A8EDecAb3E4178f06dD57be13676195571fEA2f",
+      name: "DOT",
+      symbol: "DOT",
+      decimals: 18,
     },
   },
   base: {
@@ -144,7 +162,25 @@ export const CONTRACT_ADDRESS_INFO: ContractAddressInfo = {
   },
   baseSepolia: {
     slpx: {
-      address: "0x61c57c187557442393a96bA8e6FDfE27610832a5",
+      address: "0x262e52beD191a441CBD28dB151A11D7c41384F72",
+    },
+    vETH: {
+      address: "0x6e0f9f2d25CC586965cBcF7017Ff89836ddeF9CC",
+      name: "vETH",
+      symbol: "vETH",
+      decimals: 18,
+    },
+    vDOT: {
+      address: "0x8bFA30329F2A7A7b72fa4A76FdcE8aC92284bb94",
+      name: "vDOT",
+      symbol: "vDOT",
+      decimals: 18,
+    },
+    DOT: {
+      address: "0x4B16E254E7848e0826eBDd3049474fD9E70A244c",
+      name: "DOT",
+      symbol: "DOT",
+      decimals: 18,
     },
   },
   ethereum: {
@@ -172,7 +208,25 @@ export const CONTRACT_ADDRESS_INFO: ContractAddressInfo = {
   },
   ethereumSepolia: {
     slpx: {
-      address: "0x61c57c187557442393a96bA8e6FDfE27610832a5",
+      address: "0x262e52beD191a441CBD28dB151A11D7c41384F72",
+    },
+    vETH: {
+      address: "0x6e0f9f2d25CC586965cBcF7017Ff89836ddeF9CC",
+      name: "vETH",
+      symbol: "vETH",
+      decimals: 18,
+    },
+    vDOT: {
+      address: "0x8bFA30329F2A7A7b72fa4A76FdcE8aC92284bb94",
+      name: "vDOT",
+      symbol: "vDOT",
+      decimals: 18,
+    },
+    DOT: {
+      address: "0x4B16E254E7848e0826eBDd3049474fD9E70A244c",
+      name: "DOT",
+      symbol: "DOT",
+      decimals: 18,
     },
   },
   bsc: {
@@ -200,20 +254,67 @@ export const CONTRACT_ADDRESS_INFO: ContractAddressInfo = {
   },
   bscTestnet: {
     slpx: {
-      address: "0x61c57c187557442393a96bA8e6FDfE27610832a5",
+      address: "0xC4F238cEdC1f77A0Fe36F60eceDef14336e4eFbe",
+    },
+    vETH: {
+      address: "0x66f039Bc124A3f45D3b30BFdD903B72a4857878f",
+      name: "vETH",
+      symbol: "vETH",
+      decimals: 18,
+    },
+    vDOT: {
+      address: "0x1Ed8c557791e0c98D72387423ab5c215d358E5a4",
+      name: "vDOT",
+      symbol: "vDOT",
+      decimals: 18,
+    },
+    DOT: {
+      address: "0x1dB58359534600b08Fe7061608920f1C47E7b0b0",
+      name: "DOT",
+      symbol: "DOT",
+      decimals: 18,
     },
   },
   passetHub: {
     slpx: {
-      address: "0x61c57c187557442393a96bA8e6FDfE27610832a5",
+      address: "0xeB85DBa111Af2963746f1BdfFB976BE6e8f23E10",
     },
-    vBNC: {
-      address: "0x61c57c187557442393a96bA8e6FDfE27610832a5",
-      name: "Bifrost Voucher BNC",
-      symbol: "vBNC",
+    vDOT: {
+      address: "0xef6f920fb3F0319C3b5188066E603F4F95ECF52c",
+      name: "vDOT",
+      symbol: "vDOT",
       decimals: 18,
     },
-  }
+    DOT: {
+      address: "0xa46f44d17cc56e960d470F5Eae5FBcAb53b03e27",
+      name: "DOT",
+      symbol: "DOT",
+      decimals: 18,
+    },
+  },
+  unichainSepolia: {
+    slpx: {
+      address: "0x85bb6d27571C3175c81fe212c0decCA2202147b9",
+    },
+    vETH: {
+      address: "0x7f6708716FDDFA4c2674eFa4ee20deF1b4d5C5aD",
+      name: "vETH",
+      symbol: "vETH",
+      decimals: 18,
+    },
+    vDOT: {
+      address: "0x5fD7476f615C53929922130DC8bf297e1a011f75",
+      name: "vDOT",
+      symbol: "vDOT",
+      decimals: 18,
+    },
+    DOT: {
+      address: "0x61E214E7d4DF2e619AF3F2eF4E590ABa4480259F",
+      name: "DOT",
+      symbol: "DOT",
+      decimals: 18,
+    },
+  },
 }
 
 export const PUBLIC_RPC_URLS: PublicRpcUrls = {
@@ -235,6 +336,7 @@ export const CHAIN_NAME_CHAIN_ID_MAP = {
   bsc: 56,
   bscTestnet: 97,
   passetHub: 100,
+  unichainSepolia: 11155111,
 }
 
 export const NATIVE_TOKEN_ADDRESS: Address = "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE"
