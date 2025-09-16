@@ -23,20 +23,21 @@ export type ContractAddressInfo = {
 
 export type NetworkContractInfo = {
   slpx?: SlpxContractInfo;
-  vBNC?: TokenContractInfo;
-  vETH?: TokenContractInfo;
-  DOT?: TokenContractInfo;
-  BNC?: TokenContractInfo;
-  vDOT?: TokenContractInfo;
-  vManta?: TokenContractInfo;
+  vbnc?: TokenContractInfo;
+  eth?: TokenContractInfo;
+  veth?: TokenContractInfo;
+  dot?: TokenContractInfo;
+  bnc?: TokenContractInfo;
+  vdot?: TokenContractInfo;
+  vmanta?: TokenContractInfo;
   manta?: TokenContractInfo;
-  xcDot?: TokenContractInfo;
-  xcvDOT?: TokenContractInfo;
-  xcASTR?: TokenContractInfo;
-  xcvASTR?: TokenContractInfo;
-  GLMR?: TokenContractInfo;
-  xcGLMR?: TokenContractInfo;
-  xcvGLMR?: TokenContractInfo;
+  xcdot?: TokenContractInfo;
+  xcvdot?: TokenContractInfo;
+  xcastr?: TokenContractInfo;
+  xcvastr?: TokenContractInfo;
+  glmr?: TokenContractInfo;
+  xcglmr?: TokenContractInfo;
+  xcvglmr?: TokenContractInfo;
 };
 
 export type SlpxContractInfo = {
@@ -50,12 +51,7 @@ export type TokenContractInfo = {
   decimals: number;
 }
 
-export type PublicRpcUrls = {
-  mantaPacific: string;
-  moonbeamMainnet: string;
-}
-
-export type AssetName = "vETH" | "vDOT" | "DOT" | "vManta" | "manta" | "xcDot" | "xcvDOT" | "xcASTR" | "xcvASTR" | "GLMR" | "xcGLMR" | "xcvGLMR";
+export type MintingAssetName = "eth" | "dot" | "manta" | "xcdot" | "xcastr" | "glmr" | "xcglmr";
 
 export type TestnetChainName = "moonbaseTestnet" | "arbitrumSepolia" | "base" | "baseSepolia" | "ethereum" | "ethereumSepolia" | "bsc" | "bscTestnet" | "passetHub" | "unichainSepolia";
 

@@ -1,9 +1,9 @@
 // UTILITY FUNCTIONS
 
 import { CONTRACT_ADDRESS_INFO, CHAIN_NAME_CHAIN_ID_MAP } from "./constants";
-import { AssetName, ValidTestnetChainInput, TestnetChainName } from "./types";
+import { MintingAssetName, ValidTestnetChainInput, TestnetChainName } from "./types";
 
-export function getTestnetAssetAddress(assetName: AssetName, chain: ValidTestnetChainInput): string {
+export function getTestnetAssetAddress(assetName: MintingAssetName, chain: ValidTestnetChainInput): string {
   // Convert chain ID to chain name if needed
   let chainName: TestnetChainName;
   

@@ -1,7 +1,7 @@
 import { CONTRACT_ADDRESS_INFO, CHAIN_NAME_CHAIN_ID_MAP } from "./constants";
 import { TESTNET_SLPX_V2_ABI } from "./abis";
 import { parseUnits } from "viem";
-import { ValidTestnetChainInput, AssetName } from "./types";
+import { ValidTestnetChainInput, MintingAssetName } from "./types";
 import { getTestnetAssetAddress } from "./utils";
 
 //===============================================
@@ -19,7 +19,7 @@ import { getTestnetAssetAddress } from "./utils";
  * @throws Error if amount is not a positive number
  * @throws Error if partner code is not a string
  */
-export function getTestnetMintParams(underlyingAssetName: AssetName, chain: ValidTestnetChainInput, amount: string, partnerCode: string = "bifrost") {
+export function getTestnetMintParams(underlyingAssetName: MintingAssetName, chain: ValidTestnetChainInput, amount: string, partnerCode: string = "bifrost") {
   // Check if the underlying asset address is valid
   const underlyingAssetAddress = getTestnetAssetAddress(underlyingAssetName, chain);
   
