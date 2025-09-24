@@ -1,7 +1,9 @@
-import { CONTRACT_ADDRESS_INFO } from "./constants";
-import { SLPX_V2_ABI, MANTA_SLPX_V1_ABI } from "./abis";
+import { CONTRACT_ADDRESS_INFO, CHAIN_NAME_CHAIN_ID_MAP } from "./constants";
+import { SLPX_V2_ABI, MANTA_SLPX_V1_ABI, MOONBEAM_XCM_ORACLE_ABI } from "./abis";
+import { MintingAssetName, ValidMainnetChainInput } from "./types";
+import { getMainnetAssetAddress } from "./utils";
 import { parseUnits, encodePacked } from "viem";
-import { manta } from "viem/chains"
+import { manta, moonbeam } from "viem/chains"
 
 //===============================================
 // Function exports
@@ -15,29 +17,41 @@ import { manta } from "viem/chains"
  * @returns Contract call params for estimateSendAndCallFee function
  * @throws Error if asset is not supported for the given chain
  */
-export function getEstimateSendAndCallFeeParams(asset: string, chainId: number, amount: string) {
-  switch (chainId) {
-    // Handle Manta Pacific (SLPX v1)
-    case manta.id:
-      // throw error if not MANTA token
-      if (asset !== CONTRACT_ADDRESS_INFO.mantaPacific.manta?.address) {
-        throw new Error("Asset is not MANTA token");
-      }
-      // Otherwise return params
-      return {
-        address: CONTRACT_ADDRESS_INFO.mantaPacific.slpx?.address,
-        abi: MANTA_SLPX_V1_ABI,
-        functionName: "estimateSendAndCallFee",
-        args: [
-          asset, // MANTA token
-          parseUnits(amount, 18), // amount
-          0, // channel_id
-          4000000, // dstGasForCall
-          encodePacked(["uint16", "uint256"], [1, BigInt(4200000)]), // adapterParams
-        ],
-      }
-    default:
-      throw new Error("Chain ID is not valid or unsupported");
+export function getEstimateSendAndCallFeeParams(underlyingAssetName: MintingAssetName, chain: ValidMainnetChainInput, amount: string, partnerCode: string = "bifrost") {
+
+  // Check if the underlying asset address is valid
+  const underlyingAssetAddress = getMainnetAssetAddress(underlyingAssetName, chain);
+  
+  let chainId: number;
+  
+  if (typeof chain === "string") {
+    // Look up chain name in CHAIN_NAME_CHAIN_ID_MAP
+    const mappedChainId = CHAIN_NAME_CHAIN_ID_MAP[chain as keyof typeof CHAIN_NAME_CHAIN_ID_MAP];
+    if (!mappedChainId) {
+      throw new Error(`Unknown chain name: ${chain}`);
+    }
+    chainId = mappedChainId;
+  } else {
+    chainId = chain;
+  }
+
+  // Get the chain name from chain ID to access CONTRACT_ADDRESS_INFO
+  const chainName = Object.keys(CHAIN_NAME_CHAIN_ID_MAP).find(
+    key => CHAIN_NAME_CHAIN_ID_MAP[key as keyof typeof CHAIN_NAME_CHAIN_ID_MAP] === chainId
+  ) as keyof typeof CONTRACT_ADDRESS_INFO;
+
+  if (!chainName || !CONTRACT_ADDRESS_INFO[chainName]?.slpx?.address) {
+    throw new Error(`No contract address found for chain ID: ${chainId}`);
+  }
+
+  // Check if the amount is a positive number
+  if (Number(amount) <= 0) {
+    throw new Error("Amount must be a positive number");
+  }
+
+  // Check if partner code is valid string
+  if (typeof partnerCode !== "string") {
+    throw new Error("Partner code must be a string");
   }
 }
 

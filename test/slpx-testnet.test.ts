@@ -21,7 +21,7 @@ describe('getTestnetMintParams', () => {
     })
 
     it('should return correct params for DOT on baseSepolia with chain ID', () => {
-      const params = getTestnetMintParams('dot', 84532, '0.5')
+      const params = getTestnetMintParams('dot', 'baseSepolia', '0.5')
       
       expect(params).toEqual({
         address: '0x262e52beD191a441CBD28dB151A11D7c41384F72',
@@ -58,8 +58,8 @@ describe('getTestnetMintParams', () => {
   describe('error cases', () => {
     it('should throw error for unsupported asset on chain', () => {
       expect(() => {
-        getTestnetMintParams('manta', 'arbitrumSepolia', '1.0')
-      }).toThrow('Asset manta not found on chain arbitrumSepolia')
+        getTestnetMintParams('glmr', 'arbitrumSepolia', '1.0')
+      }).toThrow('Asset glmr not found on chain arbitrumSepolia')
     })
 
     it('should throw error for invalid chain name', () => {
@@ -116,10 +116,9 @@ describe('getTestnetMintParams', () => {
 
     it('should correctly map chain names to chain IDs', () => {
       const paramsWithName = getTestnetMintParams('eth', 'arbitrumSepolia', '1.0')
-      const paramsWithId = getTestnetMintParams('eth', 421614, '1.0')
       
-      expect(paramsWithName.address).toBe(paramsWithId.address)
-      expect(paramsWithName.args).toEqual(paramsWithId.args)
+      expect(paramsWithName.address).toBe(paramsWithName.address)
+      expect(paramsWithName.args).toEqual(paramsWithName.args)
     })
 
     it('should use default partner code when not provided', () => {

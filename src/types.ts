@@ -51,10 +51,18 @@ export type TokenContractInfo = {
   decimals: number;
 }
 
-export type MintingAssetName = "eth" | "dot" | "manta" | "xcdot" | "xcastr" | "glmr" | "xcglmr";
+export type MintingAssetName = "eth" | "dot" | "xcdot" | "glmr";
 
-export type TestnetChainName = "moonbaseTestnet" | "arbitrumSepolia" | "base" | "baseSepolia" | "ethereum" | "ethereumSepolia" | "bsc" | "bscTestnet" | "passetHub" | "unichainSepolia";
+export type VTokenAssetName = "veth" | "vdot" | "vbnc" | "xcvdot" | "xcvglmr";
 
-export type TestnetChainId = 169 | 3441006 | 1284 | 1285 | 1287 | 42161 | 421614 | 8453 | 84532 | 1 | 11155111 | 56 | 97 | 420420422 | 1301;
+export type TestnetChainName = "moonbaseTestnet" | "arbitrumSepolia" | "baseSepolia" | "ethereumSepolia" | "bscTestnet" | "passetHub" | "unichainSepolia";
+
+export type TestnetChainId = 1287 | 421614 | 84532 | 11155111 | 97 | 420420422 | 1301;
+
+export type MainnetChainName = "moonbeamMainnet" | "arbitrum" | "base" | "ethereum" | "bsc";
+
+export type MainnetChainId = 1284 | 42161 | 8453 | 1 | 56;
 
 export type ValidTestnetChainInput = TestnetChainName | TestnetChainId;
+
+export type ValidMainnetChainInput = MainnetChainName | MainnetChainId;
