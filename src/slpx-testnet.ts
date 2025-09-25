@@ -61,7 +61,7 @@ export function getTestnetMintParams(
 
   let testnetMintParams;
 
-  if (eip7702) {
+  if (eip7702 === true) {
     testnetMintParams = {
       to: CONTRACT_ADDRESS_INFO[chainName].slpx!.address,
       abi: TESTNET_SLPX_V2_ABI,
@@ -132,7 +132,7 @@ export function getTestnetRedeemParams(
 
   let testnetRedeemParams;
 
-  if (eip7702) {
+  if (eip7702 === true) {
     testnetRedeemParams = {
       to: CONTRACT_ADDRESS_INFO[chainName].slpx!.address,
       abi: TESTNET_SLPX_V2_ABI,
