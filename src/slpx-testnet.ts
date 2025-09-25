@@ -59,28 +59,27 @@ export function getTestnetMintParams(
     throw new Error("Partner code must be a string");
   }
 
-  let testnetMintParams;
-
   if (eip7702 === true) {
-    testnetMintParams = {
+    const testnetMintParamsWithEip7702 = {
       to: CONTRACT_ADDRESS_INFO[chainName].slpx!.address,
       abi: TESTNET_SLPX_V2_ABI,
       functionName: "createOrder",
       value: underlyingAssetName === "eth" ? parseUnits(amount, 18) : undefined,
       args: [underlyingAssetAddress, parseUnits(amount, 18), 0, partnerCode],
     };
-  } else {
-    testnetMintParams = {
+    return testnetMintParamsWithEip7702;
+  } 
+  
+  if (eip7702 === false) {
+    const testnetMintParamsWithoutEip7702 = {
       address: CONTRACT_ADDRESS_INFO[chainName].slpx!.address,
       abi: TESTNET_SLPX_V2_ABI,
       functionName: "createOrder",
       value: underlyingAssetName === "eth" ? parseUnits(amount, 18) : undefined,
       args: [underlyingAssetAddress, parseUnits(amount, 18), 0, partnerCode],
     };
+    return testnetMintParamsWithoutEip7702;
   }
-
-  // Return the testnet mint params
-  return testnetMintParams;
 }
 
 /**
