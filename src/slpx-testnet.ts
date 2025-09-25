@@ -58,9 +58,10 @@ export function getTestnetMintParams(
   }
 
   const testnetMintParams = {
-    address: CONTRACT_ADDRESS_INFO[chainName].slpx?.address,
+    address: CONTRACT_ADDRESS_INFO[chainName].slpx!.address,
     abi: TESTNET_SLPX_V2_ABI,
     functionName: "createOrder",
+    value: underlyingAssetName === "eth" ? parseUnits(amount, 18) : undefined,
     args: [underlyingAssetAddress, parseUnits(amount, 18), 0, partnerCode],
   };
 

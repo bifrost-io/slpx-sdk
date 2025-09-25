@@ -11,6 +11,7 @@ describe('getTestnetMintParams', () => {
         address: '0x62CA64454046BbC18e35066A6350Acb0378EB3c2',
         abi: expect.any(Array),
         functionName: 'createOrder',
+        value: parseUnits('1.0', 18),
         args: [
           '0x0000000000000000000000000000000000000000', // ETH address
           parseUnits('1.0', 18),
@@ -27,6 +28,7 @@ describe('getTestnetMintParams', () => {
         address: '0x262e52beD191a441CBD28dB151A11D7c41384F72',
         abi: expect.any(Array),
         functionName: 'createOrder',
+        value: undefined,
         args: [
           '0x4B16E254E7848e0826eBDd3049474fD9E70A244c',
           parseUnits('0.5', 18),
