@@ -114,7 +114,7 @@ export function getTestnetRedeemParams(
   }
 
   const testnetRedeemParams = {
-    address: CONTRACT_ADDRESS_INFO[chainName].slpx?.address,
+    address: CONTRACT_ADDRESS_INFO[chainName].slpx!.address,
     abi: TESTNET_SLPX_V2_ABI,
     functionName: "createOrder",
     args: [underlyingAssetAddress, parseUnits(amount, 18), 1, partnerCode],
@@ -170,7 +170,7 @@ export function getTestnetConversionParams(
   }
 
   const testnetConversionParams = {
-    address: CONTRACT_ADDRESS_INFO[chainName].slpx?.address,
+    address: CONTRACT_ADDRESS_INFO[chainName].slpx!.address,
     abi: TESTNET_SLPX_V2_ABI,
     functionName: "getTokenConversionInfo",
     args: [underlyingAssetAddress],
