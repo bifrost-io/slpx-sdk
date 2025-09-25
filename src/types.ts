@@ -72,7 +72,7 @@ export type TestnetMintParamsWithEip7702 = {
   to: Address;
   abi: any;
   functionName: string;
-  value?: bigint;
+  value: bigint | undefined;
   args: any[];
 };
 
@@ -80,7 +80,7 @@ export type TestnetMintParamsWithoutEip7702 = {
   address: Address;
   abi: any;
   functionName: string;
-  value?: bigint;
+  value: bigint | undefined;
   args: any[];
 };
 
