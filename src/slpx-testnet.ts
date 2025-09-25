@@ -18,6 +18,7 @@ import { getTestnetAssetAddress, getChainNameFromChainId } from "./utils";
  * @param chain - The name or chain ID of the testnet chain
  * @param amount - The amount to send as a string (will be parsed with 18 decimals)
  * @param partnerCode - The partner code to use for the mint
+ * @param eip7702 - Whether to use EIP-7702 standard
  * @returns Contract call params for estimateSendAndCallFee function
  * @throws Error if underlying asset address is not supported for the given chain
  * @throws Error if amount is not a positive number
@@ -27,7 +28,8 @@ export function getTestnetMintParams(
   underlyingAssetName: MintingAssetName,
   chain: ValidTestnetChainInput,
   amount: string,
-  partnerCode: string = "bifrost"
+  partnerCode: string = "bifrost",
+  eip7702: boolean = false
 ) {
   // Check if the underlying asset address is valid
   const underlyingAssetAddress = getTestnetAssetAddress(
@@ -57,13 +59,25 @@ export function getTestnetMintParams(
     throw new Error("Partner code must be a string");
   }
 
-  const testnetMintParams = {
-    address: CONTRACT_ADDRESS_INFO[chainName].slpx!.address,
-    abi: TESTNET_SLPX_V2_ABI,
-    functionName: "createOrder",
-    value: underlyingAssetName === "eth" ? parseUnits(amount, 18) : undefined,
-    args: [underlyingAssetAddress, parseUnits(amount, 18), 0, partnerCode],
-  };
+  let testnetMintParams;
+
+  if (eip7702) {
+    testnetMintParams = {
+      to: CONTRACT_ADDRESS_INFO[chainName].slpx!.address,
+      abi: TESTNET_SLPX_V2_ABI,
+      functionName: "createOrder",
+      value: underlyingAssetName === "eth" ? parseUnits(amount, 18) : undefined,
+      args: [underlyingAssetAddress, parseUnits(amount, 18), 0, partnerCode],
+    };
+  } else {
+    testnetMintParams = {
+      address: CONTRACT_ADDRESS_INFO[chainName].slpx!.address,
+      abi: TESTNET_SLPX_V2_ABI,
+      functionName: "createOrder",
+      value: underlyingAssetName === "eth" ? parseUnits(amount, 18) : undefined,
+      args: [underlyingAssetAddress, parseUnits(amount, 18), 0, partnerCode],
+    };
+  }
 
   // Return the testnet mint params
   return testnetMintParams;
@@ -75,6 +89,7 @@ export function getTestnetMintParams(
  * @param chain - The name or chain ID of the testnet chain
  * @param amount - The amount to send as a string (will be parsed with 18 decimals)
  * @param partnerCode - The partner code to use for the mint
+ * @param eip7702 - Whether to use EIP-7702 standard
  * @returns Contract call params for createOrder function
  * @throws Error if underlying asset address is not supported for the given chain
  * @throws Error if amount is not a positive number
@@ -84,7 +99,8 @@ export function getTestnetRedeemParams(
   underlyingAssetName: MintingAssetName,
   chain: ValidTestnetChainInput,
   amount: string,
-  partnerCode: string = "bifrost"
+  partnerCode: string = "bifrost",
+  eip7702: boolean = false
 ) {
   // Check if the underlying asset address is valid
   const underlyingAssetAddress = getTestnetAssetAddress(
@@ -114,12 +130,23 @@ export function getTestnetRedeemParams(
     throw new Error("Partner code must be a string");
   }
 
-  const testnetRedeemParams = {
-    address: CONTRACT_ADDRESS_INFO[chainName].slpx!.address,
-    abi: TESTNET_SLPX_V2_ABI,
-    functionName: "createOrder",
-    args: [underlyingAssetAddress, parseUnits(amount, 18), 1, partnerCode],
-  };
+  let testnetRedeemParams;
+
+  if (eip7702) {
+    testnetRedeemParams = {
+      to: CONTRACT_ADDRESS_INFO[chainName].slpx!.address,
+      abi: TESTNET_SLPX_V2_ABI,
+      functionName: "createOrder",
+      args: [underlyingAssetAddress, parseUnits(amount, 18), 1, partnerCode],
+    };
+  } else {
+    testnetRedeemParams = {
+      address: CONTRACT_ADDRESS_INFO[chainName].slpx!.address,
+      abi: TESTNET_SLPX_V2_ABI,
+      functionName: "createOrder",
+      args: [underlyingAssetAddress, parseUnits(amount, 18), 1, partnerCode],
+    };
+  }
 
   // Return the testnet mint params
   return testnetRedeemParams;
