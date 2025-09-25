@@ -1,13 +1,11 @@
-import { CONTRACT_ADDRESS_INFO, CHAIN_NAME_CHAIN_ID_MAP } from "./constants";
+import { CONTRACT_ADDRESS_INFO } from "./constants";
 import {
   SLPX_V2_ABI,
   MANTA_SLPX_V1_ABI,
-  MOONBEAM_XCM_ORACLE_ABI,
 } from "./abis";
 import { MintingAssetName, MainnetChainName } from "./types";
 import { getMainnetAssetAddress } from "./utils";
-import { parseUnits, encodePacked, Address } from "viem";
-import { moonbeam } from "viem/chains";
+import { parseUnits, Address } from "viem";
 
 //===============================================
 // Function exports
