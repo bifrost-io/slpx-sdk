@@ -1,10 +1,10 @@
-import { CONTRACT_ADDRESS_INFO, CHAIN_NAME_CHAIN_ID_MAP } from "./constants";
+import { CONTRACT_ADDRESS_INFO } from "./constants";
 import { TESTNET_SLPX_V2_ABI } from "./abis";
 import { parseUnits } from "viem";
 import {
-  ValidTestnetChainInput,
   MintingAssetName,
   TestnetChainName,
+  ValidTestnetChainInput,
 } from "./types";
 import { getTestnetAssetAddress } from "./utils";
 
@@ -15,7 +15,7 @@ import { getTestnetAssetAddress } from "./utils";
 /**
  * Estimates the fee for sending and calling a cross-chain transaction
  * @param underlyingAssetName - The name of the underlying asset
- * @param chain - The destination chain ID (currently supports Manta Pacific)
+ * @param chain - The name or chain ID of the testnet chain
  * @param amount - The amount to send as a string (will be parsed with 18 decimals)
  * @param partnerCode - The partner code to use for the mint
  * @returns Contract call params for estimateSendAndCallFee function
@@ -25,19 +25,15 @@ import { getTestnetAssetAddress } from "./utils";
  */
 export function getTestnetMintParams(
   underlyingAssetName: MintingAssetName,
-  chainName: TestnetChainName,
+  chain: ValidTestnetChainInput,
   amount: string,
   partnerCode: string = "bifrost"
 ) {
   // Check if the underlying asset address is valid
   const underlyingAssetAddress = getTestnetAssetAddress(
     underlyingAssetName,
-    chainName
+    chain
   );
-
-  if (!chainName || !CONTRACT_ADDRESS_INFO[chainName]?.slpx?.address) {
-    throw new Error(`No contract address found for chain ID: ${chainName}`);
-  }
 
   // Check if the amount is a positive number
   if (Number(amount) <= 0) {
