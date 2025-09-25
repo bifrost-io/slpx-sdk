@@ -66,3 +66,22 @@ export type MainnetChainId = 1284 | 42161 | 8453 | 1 | 56;
 export type ValidTestnetChainInput = TestnetChainName | TestnetChainId;
 
 export type ValidMainnetChainInput = MainnetChainName | MainnetChainId;
+
+// Contract parameter types for EIP-7702 and non-EIP-7702
+export type TestnetMintParamsWithEip7702 = {
+  to: Address;
+  abi: any;
+  functionName: string;
+  value?: bigint;
+  args: any[];
+};
+
+export type TestnetMintParamsWithoutEip7702 = {
+  address: Address;
+  abi: any;
+  functionName: string;
+  value?: bigint;
+  args: any[];
+};
+
+export type TestnetMintParams = TestnetMintParamsWithEip7702 | TestnetMintParamsWithoutEip7702;

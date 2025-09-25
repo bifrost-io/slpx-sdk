@@ -5,6 +5,9 @@ import {
   MintingAssetName,
   TestnetChainName,
   ValidTestnetChainInput,
+  TestnetMintParams,
+  TestnetMintParamsWithoutEip7702,
+  TestnetMintParamsWithEip7702,
 } from "./types";
 import { getTestnetAssetAddress, getChainNameFromChainId } from "./utils";
 
@@ -30,7 +33,7 @@ export function getTestnetMintParams(
   amount: string,
   partnerCode: string = "bifrost",
   eip7702: boolean = false
-) {
+): TestnetMintParams {
   // Check if the underlying asset address is valid
   const underlyingAssetAddress = getTestnetAssetAddress(
     underlyingAssetName,
@@ -67,19 +70,18 @@ export function getTestnetMintParams(
       value: underlyingAssetName === "eth" ? parseUnits(amount, 18) : undefined,
       args: [underlyingAssetAddress, parseUnits(amount, 18), 0, partnerCode],
     };
-    return testnetMintParamsWithEip7702;
+    return testnetMintParamsWithEip7702 as TestnetMintParamsWithEip7702;
   } 
   
-  if (eip7702 === false) {
-    const testnetMintParamsWithoutEip7702 = {
-      address: CONTRACT_ADDRESS_INFO[chainName].slpx!.address,
-      abi: TESTNET_SLPX_V2_ABI,
-      functionName: "createOrder",
-      value: underlyingAssetName === "eth" ? parseUnits(amount, 18) : undefined,
-      args: [underlyingAssetAddress, parseUnits(amount, 18), 0, partnerCode],
-    };
-    return testnetMintParamsWithoutEip7702;
-  }
+  // Default case for eip7702 === false
+  const testnetMintParamsWithoutEip7702 = {
+    address: CONTRACT_ADDRESS_INFO[chainName].slpx!.address,
+    abi: TESTNET_SLPX_V2_ABI,
+    functionName: "createOrder",
+    value: underlyingAssetName === "eth" ? parseUnits(amount, 18) : undefined,
+    args: [underlyingAssetAddress, parseUnits(amount, 18), 0, partnerCode],
+  };
+  return testnetMintParamsWithoutEip7702 as TestnetMintParamsWithoutEip7702;
 }
 
 /**
@@ -100,7 +102,7 @@ export function getTestnetRedeemParams(
   amount: string,
   partnerCode: string = "bifrost",
   eip7702: boolean = false
-) {
+): TestnetMintParams {
   // Check if the underlying asset address is valid
   const underlyingAssetAddress = getTestnetAssetAddress(
     underlyingAssetName,
