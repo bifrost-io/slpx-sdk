@@ -6,7 +6,7 @@ import {
   TestnetChainName,
   ValidTestnetChainInput,
 } from "./types";
-import { getTestnetAssetAddress } from "./utils";
+import { getTestnetAssetAddress, getChainNameFromChainId } from "./utils";
 
 //===============================================
 // Function exports
@@ -35,6 +35,18 @@ export function getTestnetMintParams(
     chain
   );
 
+  let chainName: TestnetChainName;
+
+  if (typeof chain === "number") {
+    chainName = getChainNameFromChainId(chain) as TestnetChainName;
+  } else {
+    chainName = chain;
+  }
+
+  if (!CONTRACT_ADDRESS_INFO[chainName]?.slpx?.address) {
+    throw new Error(`No contract address found for chain ID: ${chainName}`);
+  }
+
   // Check if the amount is a positive number
   if (Number(amount) <= 0) {
     throw new Error("Amount must be a positive number");
@@ -46,7 +58,7 @@ export function getTestnetMintParams(
   }
 
   const testnetMintParams = {
-    address: CONTRACT_ADDRESS_INFO[chainName].slpx!.address,
+    address: CONTRACT_ADDRESS_INFO[chainName].slpx?.address,
     abi: TESTNET_SLPX_V2_ABI,
     functionName: "createOrder",
     args: [underlyingAssetAddress, parseUnits(amount, 18), 0, partnerCode],
@@ -69,16 +81,24 @@ export function getTestnetMintParams(
  */
 export function getTestnetConversionParams(
   underlyingAssetName: MintingAssetName,
-  chainName: TestnetChainName,
+  chain: ValidTestnetChainInput,
   amount: string,
   partnerCode: string = "bifrost"
 ) {
   const underlyingAssetAddress = getTestnetAssetAddress(
     underlyingAssetName,
-    chainName
+    chain
   );
 
-  if (!chainName || !CONTRACT_ADDRESS_INFO[chainName]?.slpx?.address) {
+  let chainName: TestnetChainName;
+
+  if (typeof chain === "number") {
+    chainName = getChainNameFromChainId(chain) as TestnetChainName;
+  } else {
+    chainName = chain;
+  }
+
+  if (!CONTRACT_ADDRESS_INFO[chainName]?.slpx?.address) {
     throw new Error(`No contract address found for chain ID: ${chainName}`);
   }
 

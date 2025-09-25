@@ -116,10 +116,11 @@ describe('getTestnetMintParams', () => {
 
     it('should correctly map chain names to chain IDs', () => {
       const paramsWithName = getTestnetMintParams('eth', 'arbitrumSepolia', '1.0')
-      
-      expect(paramsWithName.address).toBe(paramsWithName.address)
-      expect(paramsWithName.args).toEqual(paramsWithName.args)
+      const paramsWithId = getTestnetMintParams('eth', 421614, '1.0') // Arbitrum Sepolia chain ID
+      expect(paramsWithName.address).toBe(paramsWithId.address!)
+      expect(paramsWithName.args).toEqual(paramsWithId.args)
     })
+
 
     it('should use default partner code when not provided', () => {
       const params = getTestnetMintParams('eth', 'arbitrumSepolia', '1.0')

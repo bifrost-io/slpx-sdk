@@ -90,7 +90,16 @@ export function getMainnetAssetAddress(
  * @returns The name of the chain
  * @throws Error if the chain is not supported
  */
-export function getChainNameFromChainId(chainId: number): TestnetChainName | MainnetChainName {
+export function getChainNameFromChainId(chainId: number | string | undefined): TestnetChainName | MainnetChainName {
+  
+  if (!chainId) {
+    throw new Error("Chain ID is required");
+  }
+
+  if (typeof chainId !== "number") {
+    chainId = Number(chainId);
+  }
+  
   const identifiedChainName = Object.entries(CHAIN_NAME_CHAIN_ID_MAP).find(
     ([, id]) => id === chainId
   )?.[0];
