@@ -197,8 +197,6 @@ export function getTestnetRedeemParams(
 export function getTestnetConversionParams(
   underlyingAssetName: MintingAssetName,
   chain: ValidTestnetChainInput,
-  amount: string,
-  partnerCode: string = "bifrost"
 ) {
   const underlyingAssetAddress = getTestnetAssetAddress(
     underlyingAssetName,
@@ -217,16 +215,6 @@ export function getTestnetConversionParams(
     throw new Error(`No contract address found for chain ID: ${chainName}`);
   }
 
-  // Check if the amount is a positive number
-  if (Number(amount) <= 0) {
-    throw new Error("Amount must be a positive number");
-  }
-
-  // Check if partner code is valid string
-  if (typeof partnerCode !== "string") {
-    throw new Error("Partner code must be a string");
-  }
-
   const testnetConversionParams = {
     address: CONTRACT_ADDRESS_INFO[chainName].slpx!.address,
     abi: TESTNET_SLPX_V2_ABI,
@@ -236,3 +224,5 @@ export function getTestnetConversionParams(
 
   return testnetConversionParams;
 }
+
+
