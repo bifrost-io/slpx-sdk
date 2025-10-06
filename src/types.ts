@@ -85,3 +85,10 @@ export type TestnetMintParamsWithoutEip7702 = {
 };
 
 export type TestnetMintParams = TestnetMintParamsWithEip7702 | TestnetMintParamsWithoutEip7702;
+
+export type TestnetConversionParams = {
+  address: Address;
+  abi: any;
+  functionName: string;
+  args: any[];
+};

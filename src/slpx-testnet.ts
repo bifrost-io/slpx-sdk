@@ -5,6 +5,7 @@ import {
   MintingAssetName,
   TestnetChainName,
   ValidTestnetChainInput,
+  TestnetConversionParams,
 } from "./types";
 import { getTestnetAssetAddress, getChainNameFromChainId } from "./utils";
 
@@ -197,7 +198,7 @@ export function getTestnetRedeemParams(
 export function getTestnetConversionParams(
   underlyingAssetName: MintingAssetName,
   chain: ValidTestnetChainInput,
-) {
+): TestnetConversionParams {
   const underlyingAssetAddress = getTestnetAssetAddress(
     underlyingAssetName,
     chain
