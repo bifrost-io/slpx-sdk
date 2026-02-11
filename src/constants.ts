@@ -375,3 +375,5 @@ export const paseoPassethub = {
     },
   },
 } as const;
+
+export const VETH_SLPX_V2_CONTRACT_ADDRESS = "0xc3997ff81f2831929499c4eE4Ee4e0F08F42D4D8";
